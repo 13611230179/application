@@ -19,8 +19,31 @@
                 $minNum = $nums[$i];
             }
         }
-
         return $ans;
+   }
+
+    /**
+     * 两数之和(暴力美学版)
+     * @param Interget[] $nums
+     * @param Interget $target
+     * @return array
+     * @author gengjianhao
+     * @time 2022/02/27 14:30
+     */
+    function twoSumForBruteForce($nums, $target) {
+        $res = array();
+        $length = count($nums);
+        if ($length < 2) return $res;
+
+        for($i = 0; $i < $length; $i++) {
+            for($j = 1; $j < $length; $j++) {
+                if ($nums[$j] == $target - $nums[$i]) {
+                    $res = array($i, $j);
+                    break 2;
+                }
+            }
+        }
+        return $res;
     }
 
 ?>
