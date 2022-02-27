@@ -72,4 +72,30 @@
         return  $res;
     }
 
+    /**
+     * 两数之和(HashMap版,PHP中的数组满足key=>val)
+     * @param Interget[] $nums
+     * @param Interget $target
+     * @return array
+     * @author gengjianhao
+     * @time  2022/02/27  15:03
+     */
+    function twoSumForHashTable($nums, $target) {
+        $res = $hashTable = [];
+
+        //foreach效率比for效率好些
+        foreach ($nums as $key => $val) {
+            //另一个值
+            $anotherVal = $target - $val;
+
+            //如果另一个值出现在hashTable中结束循环
+            if (isset($hashTable[$anotherVal])) {
+                $res = array($hashTable[$anotherVal], $key);
+                break;
+            }
+            $hashTable[$val] = $key;
+        }
+        return $res;
+    }
+
 ?>
