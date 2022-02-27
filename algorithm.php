@@ -46,4 +46,30 @@
         return $res;
     }
 
+    /**
+     * 两数之和(array_flip版)
+     * @param Interget[] $nums
+     * @param Interget $target
+     * @return array
+     * @author gengjianhao
+     * @time 2022/02/27 14:44
+     */
+    function twoSumForArrayFlip($nums, $target) {
+        $res = array();
+        //反转查询数组
+        $reverseNums= array_flip($nums);
+
+        //foreach效率比for效率好些
+        foreach ($nums as $key => $val) {
+            //另一个值
+            $anotherVal = $target - $val;
+            //如果 这个值存在的话，而且不是当前的键对应的，那么就找到一个
+            if(isset($reverseNums[$anotherVal]) && $reverseNums[$anotherVal] != $key){
+                $res = array($key, $reverseNums[$anotherVal]);
+                break;
+            }
+        }
+        return  $res;
+    }
+
 ?>
