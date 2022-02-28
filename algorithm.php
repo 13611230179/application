@@ -136,4 +136,29 @@
         return $longStrNum;
     }
 
+    /**
+     * 无重复字符的最长子串(滑动窗口版)
+     * @param String $s
+     * @return Integer
+     * @author gengjianhao
+     * @time  2022/02/28 17:05
+     */
+    function lengthOfLongestSubstringForSlidingWindow($s) {
+        $length = strlen($s);
+        // 最长子串数
+        $longStrNum = 0;
+        // 存储不重复字符的子串
+        $longStr = '';
+        for($i = 0; $i < $length; $i++) {
+            // 判断有无重复,返回第一次出现的位置或false
+            $index = strpos($longStr, $s[$i]);
+
+            // 有重复，从重复位置开始截取后面的内容
+            if ($index !== false) $longStr = substr($longStr, $index + 1);
+
+            $longStr .= $s[$i];
+            $longStrNum = max(strlen($longStr), $longStrNum);
+        }
+        return $longStrNum;
+    }
 ?>
