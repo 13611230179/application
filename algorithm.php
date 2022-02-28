@@ -105,7 +105,7 @@
      * @author gengjianhao
      * @time  2022/02/28 16:39
      */
-    function lengthOfLongestSubstring($s) {
+    function lengthOfLongestSubstringForBruteForce($s) {
         // 字符串转数组
         $strs = str_split($s);
         // 字符串长度
