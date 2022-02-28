@@ -98,4 +98,42 @@
         return $res;
     }
 
+    /**
+     * 无重复字符的最长子串(暴力美学版)
+     * @param String $s
+     * @return Integer
+     * @author gengjianhao
+     * @time  2022/02/28 16:39
+     */
+    function lengthOfLongestSubstring($s) {
+        // 字符串转数组
+        $strs = str_split($s);
+        // 字符串长度
+        $length = count($strs);
+        // 最大字符长度
+        $longStrNum = 0;
+        // 最大字符串数组
+        // $longStrs = array();
+
+        for ($i = 0;  $i < $length; $i++) {
+            // 临时最长字符串数组
+            $tmpLongStrs = array();
+            for ($j = $i; $j < $length; $j++) {
+                if (!in_array($strs[$j], $tmpLongStrs)) {
+                    array_push($tmpLongStrs, $strs[$j]);
+                    //***注意****以下这段不能放在break上，如果最长字符串直接循环到数组末尾就不会再执行以下代码
+                    $tmpLongStrNum = count($tmpLongStrs);
+                    if ($tmpLongStrNum > $longStrNum) {
+                        $longStrNum = $tmpLongStrNum;
+                        // $longStrs = $tmpLongStrs;
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+
+        return $longStrNum;
+    }
+
 ?>
