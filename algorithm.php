@@ -161,4 +161,40 @@
         }
         return $longStrNum;
     }
+
+    /**
+     * 合并两个有序数组
+     * @param array $arr1
+     * @param int $m
+     * @param array $arr2
+     * @param int  $n
+     * @return array
+     * @auhthor gengjianhao
+     * @time 2022/03/02 21:06
+     */
+    function mergeArray($arr1, $m, $arr2, $n) {
+        $i = $m - 1;
+        $j = $n - 1;
+        $max = $m + $n - 1;
+
+        while ($i >= 0 && $j >= 0) {
+            if ($arr1[$i] > $arr2[$j]) {
+                $arr1[$max] = $arr1[$i];
+                $i--;
+            } else {
+                $arr1[$max] = $arr2[$j];
+                $j--;
+            }
+            $max--;
+        }
+
+        while ($j >= 0) {
+            $arr1[$max] = $arr2[$j];
+            $j--;
+            $max--;
+        }
+
+        return $arr1;
+    }
+
 ?>
